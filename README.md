@@ -1,6 +1,7 @@
 ![](https://github.com/StatusSin/Electric-Script/blob/main/docs/images/ElectricScript.png?raw=true "ElectricScriptLogo")
 
 # ElectricScript
+Amped to meet you! 
 
 ## Written by Aryaman Ramchandran, Kevin Gager, Jurgis Stepenka, Gabriel Sonkowsky
 
