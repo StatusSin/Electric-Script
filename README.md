@@ -1,7 +1,7 @@
 ![](https://github.com/StatusSin/Electric-Script/blob/main/docs/images/ElectricScript.png?raw=true "ElectricScriptLogo")
 
 # ElectricScript
-Amped to meet you! 
+ElectricScript is a "juiced-up" programming language for electrical engineers, aimed to bridge the gap between electrical engineering and computer science. With its electrifying set of terms and tailored features, it "amps" up the understanding for electrical engineers. Get ready to "short-circuit" your way into programming!
 
 ## Written by Aryaman Ramchandran, Kevin Gager, Jurgis Stepenka, Gabriel Sonkowsky
 
@@ -94,7 +94,7 @@ signal Fruit
 
    getColor()
    +terminal
-       out this.color
+       out current.color
     -terminal
 -terminal
 
