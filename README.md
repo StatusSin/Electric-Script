@@ -148,7 +148,6 @@ Addition: 2 + 3
 Subtraction: 2 - 3
 Multiplication: 2 * 3
 Division: 2 / 3
-Interger division: 2 // 3
 Exponents: 2 ** 3
 Modulo: 2 % 3
 Parellel Addition: (2*3)/(2+3)
@@ -163,6 +162,7 @@ Addition: 2 + 3
 Subtraction: 2 - 3
 Multiplication: 2 * 3
 Division: 2 / 3
+Interger division: 2 // 3
 Exponents: 2 ^ 3
 Modulo: 2 % 3
 Parellel Addition: 2 || 3
