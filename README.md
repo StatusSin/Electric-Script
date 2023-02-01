@@ -142,12 +142,13 @@ JavaScript
 
 ```
 
-Addition: 2 + 2
-Subtraction: 2 - 2
-Multiplication: 2 * 2
-Division: 2 / 2
-Exponents: 2 ** 2
-Modulo: 2 % 2
+Addition: 2 + 3
+Subtraction: 2 - 3
+Multiplication: 2 * 3
+Division: 2 / 3
+Exponents: 2 ** 3
+Modulo: 2 % 3
+Parellel Addition: (2*3)/(2+3)
 
 ```
 
@@ -155,11 +156,12 @@ ElectricScript
 
 ```
 
-Addition: 2 + 2
-Subtraction: 2 - 2
-Multiplication: 2 * 2
-Division: 2 / 2
-Exponents: 2 ^ 2
-Modulo: 2 % 2
+Addition: 2 + 3
+Subtraction: 2 - 3
+Multiplication: 2 * 3
+Division: 2 / 3
+Exponents: 2 ^ 3
+Modulo: 2 % 3
+Parellel Addition: 2 || 3
 
 ```
