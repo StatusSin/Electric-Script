@@ -1,34 +1,36 @@
 ![](https://github.com/StatusSin/Electric-Script/blob/main/docs/images/ElectricScript.png?raw=true "ElectricScriptLogo")
 
 # ElectricScript
+
 ElectricScript is a "juiced-up" programming language for electrical engineers, aimed to bridge the gap between electrical engineering and computer science. With its electrifying set of terms and tailored features, it "amps" up the understanding for electrical engineers. Get ready to "short-circuit" your way into programming with a familar set of engineering terms that will be sure to cause a "spark" in your brain!
 
 ## Written by Aryaman Ramchandran, Kevin Gager, Jurgis Stepenka, Gabriel Sonkowsky
 
 ## Types
-| JavaScript | ElectricScript |
-| --- | --- |
-| print      | display        |
-| return | out |
-| int | load |
-| string | label |
-| function | circuit |
-| boolean | switch |
+
+| JavaScript     | ElectricScript |
+| -------------- | -------------- |
+| print          | display        |
+| return         | out            |
+| int            | load           |
+| string         | label          |
+| function       | circuit        |
+| boolean        | switch         |
 | Error Messages | Failure Report |
-| true | high |
-| false | low |
-| break | short-circuit |
-| for | sequential |
-| while | loop |
-| if | zener |
-| let | gauge |
-| // | feedback |
-| new | charge |
-| constructor | drawing |
-| class | signal |
-| extends | wired to |
-| super | amplify |
-| this | current |
+| true           | high           |
+| false          | low            |
+| break          | short-circuit  |
+| for            | sequential     |
+| while          | loop           |
+| if             | zener          |
+| let            | gauge          |
+| //             | feedback       |
+| new            | charge         |
+| constructor    | drawing        |
+| class          | signal         |
+| extends        | wired to       |
+| super          | amplify        |
+| this           | current        |
 
 ## Example Programs
 
@@ -90,7 +92,7 @@ signal Fruit
    +terminal
        current.color = color
        current.weight = weight
-   -terminal 
+   -terminal
 
    getColor()
    +terminal
@@ -105,7 +107,7 @@ signal Watermellon wired to Fruit
       amplify(“red”, weight)
       current.seedless = seedless
    -terminal
--terminal  
+-terminal
 
 ```
 
@@ -142,12 +144,13 @@ JavaScript
 
 ```
 
-Addition: 2 + 2
-Subtraction: 2 - 2
-Multiplication: 2 * 2
-Division: 2 / 2
-Exponents: 2 ** 2
-Modulo: 2 % 2
+Addition: 2 + 3
+Subtraction: 2 - 3
+Multiplication: 2 * 3
+Division: 2 / 3
+Exponents: 2 ** 3
+Modulo: 2 % 3
+Parellel Addition: (2*3)/(2+3)
 
 ```
 
@@ -155,11 +158,12 @@ ElectricScript
 
 ```
 
-Addition: 2 + 2
-Subtraction: 2 - 2
-Multiplication: 2 * 2
-Division: 2 / 2
-Exponents: 2 ^ 2
-Modulo: 2 % 2
+Addition: 2 + 3
+Subtraction: 2 - 3
+Multiplication: 2 * 3
+Division: 2 / 3
+Exponents: 2 ^ 3
+Modulo: 2 % 3
+Parellel Addition: 2 || 3
 
 ```
