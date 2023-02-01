@@ -23,5 +23,12 @@
   "bugs": {
     "url": "https://github.com/StatusSin/Electric-Script/issues"
   },
-  "homepage": "https://github.com/StatusSin/Electric-Script#readme"
+  "homepage": "https://github.com/StatusSin/Electric-Script#readme",
+  "devDependencies": {
+    "c8": "^7.12.0",
+    "mocha": "^10.2.0"
+  },
+  "dependencies": {
+    "ohm-js": "^16.6.0"
+  }
 }
