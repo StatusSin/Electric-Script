@@ -1,0 +1,9 @@
+load x = 3
+zener(x != 5)
++terminal
+    display("load is not 5")
+-terminal
+else zener 
++terminal
+    display("load is 5")
+-terminal

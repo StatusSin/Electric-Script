@@ -1,0 +1,10 @@
+circuit changeMaker(load payment) 
++terminal
+    load quarters = payment // 25
+    payment = payment % 25
+    load dimes = payment // 10
+    payment = payment % 10
+    load nickels = payment // 5
+    payment = payment % 5
+    out [quarters, dimes, nickels, payment]
+-terminal

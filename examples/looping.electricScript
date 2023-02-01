@@ -1,0 +1,7 @@
+sequential(load i = 0; i <= 10; i++)
++terminal
+    zener(i == 3)
+    +terminal
+        short-circuit
+    -terminal
+-terminal
