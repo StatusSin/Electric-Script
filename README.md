@@ -56,6 +56,39 @@ circuit helloWorld()
 -terminal
 
 ```
+### Factorial
+
+JavaScript
+
+```
+
+function factorial(n) {
+  if (n === 0) {
+    return 1;
+  }
+  return n * factorial(n - 1);
+}
+
+console.log(factorial(5)); // Output: 120
+
+```
+
+ElectricScript
+
+```
+
+circuit factorial(n) 
++terminal
+  zener (n == 0) 
+  +terminal
+    out 1
+  -terminal
+  out n * circuit(n - 1)
+-terminal
+
+display(factorial(5)) feedback Output: 120
+
+```
 
 ### Class Creation
 
