@@ -10,6 +10,7 @@ ElectricScript is a "juiced-up" programming language for electrical engineers, a
 
 | JavaScript     | ElectricScript |
 | -------------- | -------------- |
+| {		 | (+/-)terminal  |
 | print          | display        |
 | return         | out            |
 | int            | load           |
