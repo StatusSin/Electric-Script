@@ -131,8 +131,8 @@ signal Fruit
 
    getColor()
    +terminal
-       out current.color
-    -terminal
+   	out current.color
+   -terminal
 -terminal
 
 signal Watermellon wired to Fruit
