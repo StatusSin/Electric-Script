@@ -1,6 +1,12 @@
 import fs from "fs";
 import ohm from "ohm-js";
-import * as core from "./core.js";
+
+function error(message, node) {
+  if (node) {
+    throw new Error(`${node.source.getLineAndColumnMessage()}${message}`);
+  }
+  throw new Error(message);
+}
 
 const electricScriptGrammar = ohm.grammar(
   fs.readFileSync("src/electricScript.ohm")
