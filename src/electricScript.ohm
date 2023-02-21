@@ -1,62 +1,87 @@
 ElectricScript {
-    Program         = Statement+
+	Program 		= Statement+
     
-    Statement       = PrintStatement
-                    | VarDec
+    Statement 		= PrintStatement
+    				| VarDec
                     | AssignStmt
-                    | IfStmt                            
-                    | Else                      
+                    | IfStmt							
+                    | Else
+                    | Func
+                    | Return
+                    | For
+                    | Break
                     
-    Else            = else IfStmt?
-                    | else Block
+    Break			= shortCircuit
                     
-    AssignStmt      = id "=" Exp
+    For				= sequential "(" load id "=" numeral ";" id cond numeral ";" id modifier ")" Block
+                    
+    Return			= out Value
     
-    Block           = "+terminal" Statement* "-terminal"
+    Value			= Var | stringLiteral | numeral | array
+                    
+    Func			= circuit id"(" type id ")" Block
+                    
+    Else			= else IfStmt?
+    				| else Block
+                    
+    AssignStmt		= id "=" Exp
     
-    IfStmt          = zener"(" Exp cond Exp ")" Block
+    Block			= "+terminal" Statement* "-terminal"
     
-    VarDec          = IntDec | BoolDec | StrDec
+    IfStmt			= zener"(" Exp cond Exp ")" Block
     
-    IntDec          = load Var "=" numeral
+    VarDec			= IntDec | BoolDec | StrDec
     
-    BoolDec         = switch Var "=" bool
+    IntDec			= load Var "=" numeral | load Var "=" Exp
     
-    StrDec          = label Var "=" stringLiteral
+    BoolDec			= switch Var "=" bool
     
-    PrintStatement  = display "(" Exp ")"
+    StrDec			= label Var "=" stringLiteral
     
-    id              = ~keyword idChar+
+    PrintStatement 	= display "(" Exp ")"
     
-    idChar          = letter+
+    id				= ~keyword idChar+
     
-    keyword         = display | load | label | switch | zener
+    type			= load | label | switch
     
-    cond            = "!=" | "==" | "<=" | ">="
+    idChar			= letter+
     
-    Var             = id
+    keyword			= display | load | label | switch | zener | circuit | else | on | off | out | sequential
     
-    Exp             = Exp "+" Term              --add
-                    | Exp "+" Term              --sub
-                    | Exp "^" Term              --exp
-                    | Exp "*" Term              --mul
-                    | Exp "%" Term              --mod
-                    | Exp "/" Term              --div
-                    | Exp "//" Term             --intdiv
-                    | Term
+    modifier		= "++" | "--"
+    
+    cond			= "!=" | "==" | "<=" | ">="
+    
+    Var				= id
+    
+    Exp 			= Exp "+" Exp				--add
+    				| Exp "-" Exp				--sub
+                    | Exp "^" Exp				--exp
+                    | Exp "*" Exp				--mul
+                    | Exp "%" Exp				--mod
+                    | Exp "/" Exp				--div
+                    | Exp "//" Exp				--intdiv
+    				| Term
                    
-    Term            = numeral | stringLiteral | Var
+    Term 			= numeral | Var | stringLiteral
     
-    switch          = "switch" ~idChar
-    load            = "load" ~idChar
-    label           = "label" ~idChar
-    display         = "display" ~idChar
-    numeral         = digit+ ("."digit+)?
-    zener           = "zener" ~idChar
-    bool            = on | off
-    on              = "on" ~idChar
-    off             = "off" ~idChar
-    else            = "else" ~idChar
+    switch 			= "switch" ~idChar
+    load 			= "load" ~idChar
+    label			= "label" ~idChar
+    display			= "display" ~idChar
+    numeral 		= digit+ ("."digit+)?
+    zener			= "zener" ~idChar
+    bool			= on | off
+    on				= "on" ~idChar
+    off				= "off" ~idChar
+    else			= "else" ~idChar
+    circuit			= "circuit" ~idChar
+    out				= "out" ~idChar
+    array			= "[" element* finalElement "]"
+    finalElement	= numeral | stringLiteral | id
+    element			= finalElement ", " | finalElement ","
+    sequential		= "sequential" ~idChar
+    shortCircuit	= "short-circuit" ~idChar
     
-    stringLiteral   = "\"" (~"\"" any)* "\""
+    stringLiteral 	= "\"" (~"\"" any)* "\""
 }
