@@ -1,0 +1,56 @@
+ElectricScript {
+	Program 		= Statement+
+    
+    Statement 		= PrintStatement
+    				| VarDec
+                    | AssignStmt
+                    | IfStmt
+                    | Then
+                    
+    AssignStmt		= id "=" Exp
+    
+    Then			= "+terminal"
+    
+    IfStmt			= zener"(" Exp cond Exp ")"
+    
+    VarDec			= IntDec | BoolDec | StrDec
+    
+    IntDec			= load Var "=" numeral
+    
+    BoolDec			= switch Var "=" bool
+    
+    StrDec			= label Var "=" stringLiteral
+    
+    PrintStatement 	= display "(" Exp ")"
+    
+    id				= ~keyword idChar+
+    
+    idChar			= letter+
+    
+    keyword			= display | load | label | switch | zener
+    
+    cond			= "!=" | "==" | "<=" | ">="
+    
+    Var				= id
+    
+    Exp 			= Exp "+" Term				--add
+    				| Exp "+" Term				--sub
+                    | Exp "^" Term				--exp
+                    | Exp "*" Term				--mul
+                    | Exp "%" Term				--mod
+    				| Term
+                   
+    Term 			= numeral | stringLiteral | Var
+    
+    switch 			= "switch" ~idChar
+    load 			= "load" ~idChar
+    label			= "label" ~idChar
+    display			= "display" ~idChar
+    numeral 		= digit+ ("."digit+)?
+    zener			= "zener" ~idChar
+    bool			= on | off
+    on				= "on" ~idChar
+    off				= "off" ~idChar
+    
+    stringLiteral 	= "\"" (~"\"" any)* "\""
+}
