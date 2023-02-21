@@ -1,58 +1,62 @@
 ElectricScript {
-	Program 		= Statement+
+    Program         = Statement+
     
-    Statement 		= PrintStatement
-    				| VarDec
+    Statement       = PrintStatement
+                    | VarDec
                     | AssignStmt
-                    | IfStmt
-                    | Then
+                    | IfStmt                            
+                    | Else                      
                     
-    AssignStmt		= id "=" Exp
+    Else            = else IfStmt?
+                    | else Block
+                    
+    AssignStmt      = id "=" Exp
     
-    Then			= "+terminal"
+    Block           = "+terminal" Statement* "-terminal"
     
-    IfStmt			= zener"(" Exp cond Exp ")"
+    IfStmt          = zener"(" Exp cond Exp ")" Block
     
-    VarDec			= IntDec | BoolDec | StrDec
+    VarDec          = IntDec | BoolDec | StrDec
     
-    IntDec			= load Var "=" numeral
+    IntDec          = load Var "=" numeral
     
-    BoolDec			= switch Var "=" bool
+    BoolDec         = switch Var "=" bool
     
-    StrDec			= label Var "=" stringLiteral
+    StrDec          = label Var "=" stringLiteral
     
-    PrintStatement 	= display "(" Exp ")"
+    PrintStatement  = display "(" Exp ")"
     
-    id				= ~keyword idChar+
+    id              = ~keyword idChar+
     
-    idChar			= letter+
+    idChar          = letter+
     
-    keyword			= display | load | label | switch | zener
+    keyword         = display | load | label | switch | zener
     
-    cond			= "!=" | "==" | "<=" | ">="
+    cond            = "!=" | "==" | "<=" | ">="
     
-    Var				= id
+    Var             = id
     
-    Exp 			= Exp "+" Term				--add
-    				| Exp "-" Term				--sub
-                    | Exp "^" Term				--exp
-                    | Exp "*" Term				--mul
+    Exp             = Exp "+" Term              --add
+                    | Exp "+" Term              --sub
+                    | Exp "^" Term              --exp
+                    | Exp "*" Term              --mul
+                    | Exp "%" Term              --mod
                     | Exp "/" Term              --div
                     | Exp "//" Term             --intdiv
-                    | Exp "%" Term				--mod
-    				| Term
+                    | Term
                    
-    Term 			= numeral | stringLiteral | Var
+    Term            = numeral | stringLiteral | Var
     
-    switch 			= "switch" ~idChar
-    load 			= "load" ~idChar
-    label			= "label" ~idChar
-    display			= "display" ~idChar
-    numeral 		= digit+ ("."digit+)?
-    zener			= "zener" ~idChar
-    bool			= on | off
-    on				= "on" ~idChar
-    off				= "off" ~idChar
+    switch          = "switch" ~idChar
+    load            = "load" ~idChar
+    label           = "label" ~idChar
+    display         = "display" ~idChar
+    numeral         = digit+ ("."digit+)?
+    zener           = "zener" ~idChar
+    bool            = on | off
+    on              = "on" ~idChar
+    off             = "off" ~idChar
+    else            = "else" ~idChar
     
-    stringLiteral 	= "\"" (~"\"" any)* "\""
+    stringLiteral   = "\"" (~"\"" any)* "\""
 }
