@@ -10,10 +10,13 @@ ElectricScript {
                     | Return
                     | For
                     | Break
+                    | Comment
+                    
+    Comment			= feedback (~"\n" any)*
                     
     Break			= shortCircuit
                     
-    For				= sequential "(" load id "=" numeral ";" id cond numeral ";" id modifier ")" Block
+    For				= sequential "(" load id "=" numeral ";" Cond ";" id modifier ")" Block
                     
     Return			= out Value
     
@@ -28,13 +31,13 @@ ElectricScript {
     
     Block			= "+terminal" Statement* "-terminal"
     
-    IfStmt			= zener"(" Exp cond Exp ")" Block
+    IfStmt			= zener"(" Cond ")" Block
     
     VarDec			= IntDec | BoolDec | StrDec
     
-    IntDec			= load Var "=" numeral | load Var "=" Exp
+    IntDec			= load Var "=" Exp
     
-    BoolDec			= switch Var "=" bool
+    BoolDec			= switch Var "=" bool | switch Var "=" Exp
     
     StrDec			= label Var "=" stringLiteral
     
@@ -46,11 +49,11 @@ ElectricScript {
     
     idChar			= letter+
     
-    keyword			= display | load | label | switch | zener | circuit | else | on | off | out | sequential
+    keyword			= display | load | label | switch | zener | circuit | else | on | off | out | sequential | feedback
     
     modifier		= "++" | "--"
     
-    cond			= "!=" | "==" | "<=" | ">="
+    Cond			= Exp "!=" Exp | Exp "==" Exp | Exp "<=" Exp | Exp ">=" Exp | Exp ">" Exp | Exp "<" Exp
     
     Var				= id
     
@@ -61,7 +64,10 @@ ElectricScript {
                     | Exp "%" Exp				--mod
                     | Exp "/" Exp				--div
                     | Exp "//" Exp				--intdiv
+                    | Cond
     				| Term
+                    | "(" Exp ")"				--paren
+                    | "-" Exp					--neg
                    
     Term 			= numeral | Var | stringLiteral
     
@@ -82,6 +88,7 @@ ElectricScript {
     element			= finalElement ", " | finalElement ","
     sequential		= "sequential" ~idChar
     shortCircuit	= "short-circuit" ~idChar
+    feedback		= "feedback" ~idChar
     
     stringLiteral 	= "\"" (~"\"" any)* "\""
 }
