@@ -37,7 +37,8 @@ ElectricScript {
     				| Exp "-" Term				--sub
                     | Exp "^" Term				--exp
                     | Exp "*" Term				--mul
-                    | Exp "//" Term             --div
+                    | Exp "/" Term              --div
+                    | Exp "//" Term             --intdiv
                     | Exp "%" Term				--mod
     				| Term
                    
