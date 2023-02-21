@@ -10,8 +10,8 @@ ElectricScript is a "juiced-up" programming language for electrical engineers, a
 
 | JavaScript     | ElectricScript |
 | -------------- | -------------- |
-| {		 | + terminal     |
-| }		 | - terminal     |
+| {              | + terminal     |
+| }              | - terminal     |
 | print          | display        |
 | return         | out            |
 | int            | load           |
@@ -58,6 +58,7 @@ circuit helloWorld()
 -terminal
 
 ```
+
 ### Factorial
 
 JavaScript
@@ -79,9 +80,9 @@ ElectricScript
 
 ```
 
-circuit factorial(n) 
+circuit factorial(n)
 +terminal
-  zener (n == 0) 
+  zener (n == 0)
   +terminal
     out 1
   -terminal
@@ -183,7 +184,8 @@ Addition: 2 + 3
 Subtraction: 2 - 3
 Multiplication: 2 * 3
 Division: 2 / 3
-Exponents: 2 ** 3
+Interger Division: 2 // 3
+Exponents: 2 ^ 3
 Modulo: 2 % 3
 Parellel Addition: (2*3)/(2+3)
 
