@@ -34,9 +34,10 @@ ElectricScript {
     Var				= id
     
     Exp 			= Exp "+" Term				--add
-    				| Exp "+" Term				--sub
+    				| Exp "-" Term				--sub
                     | Exp "^" Term				--exp
                     | Exp "*" Term				--mul
+                    | Exp "//" Term             --div
                     | Exp "%" Term				--mod
     				| Term
                    
