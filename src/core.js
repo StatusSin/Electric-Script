@@ -1,3 +1,5 @@
+import util from "util";
+
 class Program {
   constructor(statements) {
     this.statements = statements;
