@@ -5,7 +5,6 @@ ElectricScript {
     				| VarDec
                     | AssignStmt
                     | IfStmt							
-                    | Else
                     | Func
                     | Return
                     | For
@@ -31,7 +30,7 @@ ElectricScript {
     
     Block			= "+terminal" Statement* "-terminal"
     
-    IfStmt			= zener"(" Cond ")" Block
+    IfStmt			= zener"(" Cond ")" Block Else?
     
     VarDec			= IntDec | BoolDec | StrDec
     
