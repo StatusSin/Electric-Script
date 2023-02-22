@@ -24,13 +24,13 @@ export default function analyze(sourceCode) {
       return core.PrintStatement(argument.rep());
     },
     IntDec(_load, variable, _eq, initializer) {
-      return new core.IntDeclaration(variable.rep(), initializer.rep());
+      return new core.VarDeclaration(variable.rep(), initializer.rep());
     },
     StrDec(_label, variable, _eq, initializer) {
-      return new core.IntDeclaration(variable.rep(), initializer.rep());
+      return new core.VarDeclaration(variable.rep(), initializer.rep());
     },
     BoolDec(_switch, variable, _eq, initializer) {
-      return new core.IntDeclaration(variable.rep(), initializer.rep());
+      return new core.VarDeclaration(variable.rep(), initializer.rep());
     },
     AssignStmt(target, _eq, source) {
       return new core.AssignmentStatement(target.rep(), source.rep());

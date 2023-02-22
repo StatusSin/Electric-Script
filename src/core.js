@@ -12,21 +12,7 @@ export class PrintStatement {
   }
 }
 
-export class IntDeclaration {
-  constructor(variable, initializer) {
-    this.variable = variable;
-    this.initializer = initializer;
-  }
-}
-
-export class StringDeclaration {
-  constructor(variable, initializer) {
-    this.variable = variable;
-    this.initializer = initializer;
-  }
-}
-
-export class BoolDeclaration {
+export class VarDeclaration {
   constructor(variable, initializer) {
     this.variable = variable;
     this.initializer = initializer;
