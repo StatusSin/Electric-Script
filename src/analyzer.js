@@ -122,6 +122,12 @@ export default function analyze(sourceCode) {
     stringLiteral(_openQ, chars, _closeQ) {
       return new core.StringLiteral(chars.sourceString);
     },
+    _iter(...children) {
+      return children.map((child) => child.rep());
+    },
+    _terminal() {
+      return this.sourceString;
+    },
   });
 
   const match = electricScriptGrammar.match(sourceCode);
