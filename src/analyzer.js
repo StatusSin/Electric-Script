@@ -1,3 +1,5 @@
+import { SSL_OP_TLS_BLOCK_PADDING_BUG } from "constants";
+import { Cipher } from "crypto";
 import fs from "fs";
 import ohm from "ohm-js";
 import * as core from "./core.js";
@@ -20,6 +22,105 @@ export default function analyze(sourceCode) {
     },
     PrintStatement(_display, _left, argument, _right) {
       return core.PrintStatement(argument.rep());
+    },
+    IntDec(_load, variable, _eq, initializer) {
+      return new core.IntDeclaration(variable.rep(), initializer.rep());
+    },
+    StrDec(_label, variable, _eq, initializer) {
+      return new core.IntDeclaration(variable.rep(), initializer.rep());
+    },
+    BoolDec(_switch, variable, _eq, initializer) {
+      return new core.IntDeclaration(variable.rep(), initializer.rep());
+    },
+    AssignStmt(target, _eq, source) {
+      return new core.AssignmentStatement(target.rep(), source.rep());
+    },
+    IfStmt(_zener, _left, test, _right, consequent, alternate) {
+      return new core.IfStatement(
+        test.rep(),
+        consequent.rep(),
+        alternate.rep()
+      );
+    },
+    Func(_circuit, name, _left, type, variable, _right, consequent) {
+      return new core.Function(
+        name.rep(),
+        type.rep(),
+        variable.rep(),
+        consequent.rep()
+      );
+    },
+    Return(_out, value) {
+      return new core.Return(value.rep());
+    },
+    For(
+      _sequential,
+      _left,
+      _load,
+      variable1,
+      _eq,
+      num,
+      _sc1,
+      test,
+      _sc2,
+      variable2,
+      mod,
+      _right,
+      consequent
+    ) {
+      return new core.For(
+        variable1.rep(),
+        num.rep(),
+        test.rep(),
+        variable2.rep(),
+        mod.rep(),
+        consequent.rep()
+      );
+    },
+    Comment(_feedback, comment) {
+      return new core.Comment(comment.rep());
+    },
+    Block(_open, consequent, _close) {
+      return new core.Block(consequent.rep());
+    },
+    id(chars) {
+      return chars.sourceString;
+    },
+    Var(id) {
+      return this.sourceString;
+    },
+    Exp_add(left, _plus, right) {
+      return new core.BinaryExpression("+", left.rep(), right.rep());
+    },
+    Exp_sub(left, _minus, right) {
+      return new core.BinaryExpression("-", left.rep(), right.rep());
+    },
+    Exp_exp(left, _carat, right) {
+      return new core.BinaryExpression("^", left.rep(), right.rep());
+    },
+    Exp_mul(left, _asterisk, right) {
+      return new core.BinaryExpression("*", left.rep(), right.rep());
+    },
+    Exp_mod(left, _modulo, right) {
+      return new core.BinaryExpression("%", left.rep(), right.rep());
+    },
+    Exp_div(left, _slash, right) {
+      return new core.BinaryExpression("/", left.rep(), right.rep());
+    },
+    Exp_intdiv(left, _doubleSlash, right) {
+      return new core.BinaryExpression("//", left.rep(), right.rep());
+    },
+    Exp_paren(_left, expression, _right) {
+      return expression.rep();
+    },
+    Exp_neg(_negative, negNum) {
+      return negNum.rep();
+    },
+    numeral(_leading, _dot, _fraction) {
+      return this.sourceString;
+    },
+    stringLiteral(_openQ, chars, _closeQ) {
+      return chars.sourceString;
     },
   });
 

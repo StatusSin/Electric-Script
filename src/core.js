@@ -1,40 +1,84 @@
 import util from "util";
 
-class Program {
+export class Program {
   constructor(statements) {
     this.statements = statements;
   }
 }
 
-class PrintStatement {
+export class PrintStatement {
   constructor(argument) {
     this.argument = argument;
   }
 }
 
-class VariableDeclaration {
+export class IntDeclaration {
   constructor(variable, initializer) {
     this.variable = variable;
     this.initializer = initializer;
   }
 }
 
-class AssignmentStatement {
+export class StringDeclaration {
   constructor(variable, initializer) {
     this.variable = variable;
     this.initializer = initializer;
   }
 }
 
-class IfStatement {
+export class BoolDeclaration {
+  constructor(variable, initializer) {
+    this.variable = variable;
+    this.initializer = initializer;
+  }
+}
+
+export class AssignmentStatement {
+  constructor(variable, initializer) {
+    this.variable = variable;
+    this.initializer = initializer;
+  }
+}
+
+export class IfStatement {
   constructor(test, consequence, alternate) {
     Object.assign(this, { test, consequence, alternate });
   }
 }
 
-class BinaryExpression {
+export class BinaryExpression {
   constructor(op, left, right) {
     Object.assign(this, { op, left, right });
+  }
+}
+
+export class Function {
+  constructor(name, type, variable, consequent) {
+    Object.assign(this, { name, type, variable, consequent });
+  }
+}
+
+export class Return {
+  constructor(value) {
+    this.value = value;
+  }
+}
+
+export class For {
+  constructor(variable, num, test, mod, consequent) {
+    Object.assign(this, { variable, num, test, mod, consequent });
+  }
+}
+
+export class Comment {
+  constructor(comment) {
+    this.comment = comment;
+  }
+}
+
+export class Block {
+  constructor(consequent) {
+    this.consequent = consequent;
   }
 }
 
