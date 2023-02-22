@@ -18,10 +18,10 @@ const electricScriptGrammar = ohm.grammar(
 export default function analyze(sourceCode) {
   const analyzer = electricScriptGrammar.createSemantics().addOperation("rep", {
     Program(statements) {
-      return new core.Program(statements.rep());
+      return new core.Program(statements.children.map((s) => s.rep()));
     },
     PrintStatement(_display, _left, argument, _right) {
-      return core.PrintStatement(argument.rep());
+      return new core.PrintStatement(argument.rep());
     },
     IntDec(_load, variable, _eq, initializer) {
       return new core.VarDeclaration(variable.rep(), initializer.rep());
@@ -117,13 +117,14 @@ export default function analyze(sourceCode) {
       return negNum.rep();
     },
     numeral(_leading, _dot, _fraction) {
-      return this.sourceString;
+      return Number(this.sourceString);
     },
     stringLiteral(_openQ, chars, _closeQ) {
-      return chars.sourceString;
+      return new core.StringLiteral(chars.sourceString);
     },
   });
 
   const match = electricScriptGrammar.match(sourceCode);
   if (!match.succeeded()) error(match.message);
+  return analyzer(match).rep();
 }
