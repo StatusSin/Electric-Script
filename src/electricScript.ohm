@@ -63,12 +63,12 @@ ElectricScript {
     
     Exp1			=  Exp1 "^" Exp2  							--exp
     					| Exp2
-                        
-  	Exp2            = 	Exp2 ("+" | "-") Exp3                   --add 
-              			| Exp3
-                        
-    Exp3		    = Exp3 ("*"| "/" | "%"|"//") Exp4           --mul
-    					| Exp4
+                                                
+    Exp2		    = Exp2 ("*"| "/" | "%"|"//") Exp3           --mul
+    					| Exp3
+
+    Exp3            = 	Exp3 ("+" | "-") Exp4                   --add 
+              			| Exp4
 
 	Exp4			= Term 
                         | Cond
