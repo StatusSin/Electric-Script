@@ -58,17 +58,21 @@ ElectricScript {
     
     Var				= id
     
-    Exp 			= Exp "+" Exp				--add
-    				| Exp "-" Exp				--sub
-                    | Exp "^" Exp				--exp
-                    | Exp "*" Exp				--mul
-                    | Exp "%" Exp				--mod
-                    | Exp "/" Exp				--div
-                    | Exp "//" Exp				--intdiv
-                    | Cond
-    				| Term
-                    | "(" Exp ")"				--paren
-                    | "-" Exp					--neg
+    Exp				=   "(" Exp ")"								--paren
+    			        | Exp1
+    
+    Exp1			=  Exp1 "^" Exp2  							--exp
+    					| Exp2
+                        
+  	Exp2            = 	Exp2 ("+" | "-") Exp3                   --add 
+              			| Exp3
+                        
+    Exp3		    = Exp3 ("*"| "/" | "%"|"//") Exp4           --mul
+    					| Exp4
+
+	Exp4			= Term 
+                        | Cond
+                        | "-" Exp4                              --neg
                    
     Term 			= numeral | Var | stringLiteral
     
