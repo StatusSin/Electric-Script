@@ -68,31 +68,31 @@ export default function analyze(sourceCode) {
     Var(id) {
       return this.sourceString;
     },
-    Exp_add(left, _plus, right) {
+    Exp3_add(left, _plus, right) {
       return new core.BinaryExpression("+", left.rep(), right.rep());
     },
-    Exp_sub(left, _minus, right) {
+    Exp3_sub(left, _minus, right) {
       return new core.BinaryExpression("-", left.rep(), right.rep());
     },
-    Exp_exp(left, _carat, right) {
+    Exp1_exp(left, _carat, right) {
       return new core.BinaryExpression("^", left.rep(), right.rep());
     },
-    Exp_mul(left, _asterisk, right) {
+    Exp2_mul(left, _asterisk, right) {
       return new core.BinaryExpression("*", left.rep(), right.rep());
     },
-    Exp_mod(left, _modulo, right) {
+    Exp2_mod(left, _modulo, right) {
       return new core.BinaryExpression("%", left.rep(), right.rep());
     },
-    Exp_div(left, _slash, right) {
+    Exp2_div(left, _slash, right) {
       return new core.BinaryExpression("/", left.rep(), right.rep());
     },
-    Exp_intdiv(left, _doubleSlash, right) {
+    Exp2_intdiv(left, _doubleSlash, right) {
       return new core.BinaryExpression("//", left.rep(), right.rep());
     },
     Exp_paren(_left, expression, _right) {
       return expression.rep();
     },
-    Exp_neg(_negative, negNum) {
+    Exp4_neg(_negative, negNum) {
       return negNum.rep();
     },
     numeral(_leading, _dot, _fraction) {
