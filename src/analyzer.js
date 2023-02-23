@@ -53,29 +53,8 @@ export default function analyze(sourceCode) {
     Return(_out, value) {
       return new core.Return(value.rep());
     },
-    For(
-      _sequential,
-      _left,
-      _load,
-      variable1,
-      _eq,
-      num,
-      _sc1,
-      test,
-      _sc2,
-      variable2,
-      mod,
-      _right,
-      consequent
-    ) {
-      return new core.For(
-        variable1.rep(),
-        num.rep(),
-        test.rep(),
-        variable2.rep(),
-        mod.rep(),
-        consequent.rep()
-      );
+    For(_sequential, _left, args, _right, consequent) {
+      return new core.For(args.rep(), consequent.rep());
     },
     Comment(_feedback, comment) {
       return new core.Comment(comment.rep());
@@ -127,6 +106,9 @@ export default function analyze(sourceCode) {
     },
     _terminal() {
       return this.sourceString;
+    },
+    array(_leftBrac, elements, _rightBrac) {
+      return new core.Arrays(elements.sourceCode);
     },
   });
 

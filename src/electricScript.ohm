@@ -11,11 +11,27 @@ ElectricScript {
                     | Break
                     | Comment
                     
+    For				= sequential "(" ForCond ")" Block
+    
+    ForCond			= IntDec ";" Cond ";" modifier
+    
+    Cond			= Exp "!=" Exp | Exp "==" Exp | Exp "<=" Exp | Exp ">=" Exp | Exp ">" Exp | Exp "<" Exp
+    
+    modifier		= id "++" | id "--"
+    
+    Block			= "+terminal" Statement* "-terminal"
+    
+    VarDec			= IntDec | BoolDec | StrDec
+    
+    IntDec			= load Var "=" Exp
+    
+    BoolDec			= switch Var "=" bool | switch Var "=" Exp
+    
+    StrDec			= label Var "=" stringLiteral
+    
     Comment			= feedback (~"\n" any)*
                     
     Break			= shortCircuit
-                    
-    For				= sequential "(" load id "=" numeral ";" Cond ";" id modifier ")" Block
                     
     Return			= out Value
     
@@ -28,17 +44,7 @@ ElectricScript {
                     
     AssignStmt		= id "=" Exp
     
-    Block			= "+terminal" Statement* "-terminal"
-    
     IfStmt			= zener"(" Cond ")" Block Else?
-    
-    VarDec			= IntDec | BoolDec | StrDec
-    
-    IntDec			= load Var "=" Exp
-    
-    BoolDec			= switch Var "=" bool | switch Var "=" Exp
-    
-    StrDec			= label Var "=" stringLiteral
     
     PrintStatement 	= display "(" Exp ")"
     
@@ -49,10 +55,6 @@ ElectricScript {
     idChar			= letter+
     
     keyword			= display | load | label | switch | zener | circuit | else | on | off | out | sequential | feedback
-    
-    modifier		= "++" | "--"
-    
-    Cond			= Exp "!=" Exp | Exp "==" Exp | Exp "<=" Exp | Exp ">=" Exp | Exp ">" Exp | Exp "<" Exp
     
     Var				= id
     
@@ -82,9 +84,10 @@ ElectricScript {
     else			= "else" ~idChar
     circuit			= "circuit" ~idChar
     out				= "out" ~idChar
-    array			= "[" element* finalElement "]"
-    finalElement	= numeral | stringLiteral | id
-    element			= finalElement ", " | finalElement ","
+    array			= "[" element* "]"
+    elementVal		= numeral | stringLiteral | id
+    element			= elementVal ", " 			--elem
+    				| elementVal				--endElem
     sequential		= "sequential" ~idChar
     shortCircuit	= "short-circuit" ~idChar
     feedback		= "feedback" ~idChar
