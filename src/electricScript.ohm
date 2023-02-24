@@ -11,11 +11,9 @@ ElectricScript {
                     | Break
                     | Comment
                     
-    For				= sequential "(" ForCond ")" Block
+    For				= sequential "(" ForArg ")" Block
     
-    ForCond			= IntDec ";" Cond ";" modifier
-    
-    Cond			= Exp "!=" Exp | Exp "==" Exp | Exp "<=" Exp | Exp ">=" Exp | Exp ">" Exp | Exp "<" Exp
+    ForArg			= IntDec ";" Exp1 ";" modifier
     
     modifier		= id "++" | id "--"
     
@@ -44,7 +42,7 @@ ElectricScript {
                     
     AssignStmt		= id "=" Exp
     
-    IfStmt			= zener"(" Cond ")" Block Else?
+    IfStmt			= zener"(" Exp1 ")" Block Else?
     
     PrintStatement 	= display "(" Exp ")"
     
@@ -58,27 +56,26 @@ ElectricScript {
     
     Var				= id
     
-    Exp				=   "(" Exp ")"								--paren
-    			    | Exp1
     
-    Exp1			=  Exp1 "^" (Exp|Exp1|Exp2)  				--exp
+    Exp				= "-" Exp									--neg
+    				| Exp1
+                    
+    Exp1			= Exp2 ("<="|"<"|"=="|"!="|">="|">") Exp2	--binary
     				| Exp2
-                                                
-    Exp2		    = Exp2 "*" (Exp|Exp1|Exp2|Exp3) 			--mul
-    				| Exp2 "//" (Exp|Exp1|Exp2|Exp3) 			--intdiv
-                    | Exp2 "%" (Exp|Exp1|Exp2|Exp3) 			--mod
-                    | Exp2 "/" (Exp|Exp1|Exp2|Exp3) 			--div
+                    
+   	Exp2			= Exp2 ("+" | "-") Exp3						--binary
     				| Exp3
-                        
+                    
+    Exp3			= Exp3 ("*" | "//" | "/" | "%") Exp4		--binary
+    				| Exp4
+                    
+    Exp4			= Exp5 "^" Exp4								--binary
+    				| Exp5
     
-    Exp3            = Exp3 "+" (Exp|Exp1|Exp2|Exp3|Exp4)		--add
-    				| Exp3 "-" (Exp|Exp1|Exp2|Exp3|Exp4)		--sub
-              		| Exp4
-
-	Exp4			= Cond
-                    | Term
-                    | "-" Exp4                            		--neg
-                   
+    Exp5			= Term
+    				| "(" Exp ")"								--paren
+    
+    
     Term 			= numeral | Var | stringLiteral
     
     switch 			= "switch" ~idChar
