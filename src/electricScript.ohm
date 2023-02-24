@@ -37,8 +37,8 @@ ElectricScript {
                     
     Func			= circuit id"(" type id ")" Block
                     
-    Else			= else IfStmt?
-    				| else Block
+    Else			= else IfStmt?                              --elseif
+    				| else Block                                --else
                     
     AssignStmt		= id "=" Exp
     

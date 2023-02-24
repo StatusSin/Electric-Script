@@ -42,6 +42,12 @@ export default function analyze(sourceCode) {
         alternate.rep()
       );
     },
+    Else_elseif(_else, ifStmt) {
+      return new core.ElseIf(ifStmt.rep());
+    },
+    Else_else(_else, consequent) {
+      return new core.Else(consequent.rep());
+    },
     Func(_circuit, name, _left, type, variable, _right, consequent) {
       return new core.Function(
         name.rep(),
@@ -56,6 +62,9 @@ export default function analyze(sourceCode) {
     For(_sequential, _left, args, _right, consequent) {
       return new core.For(args.rep(), consequent.rep());
     },
+    ForArg(intDec, _sc1, test, _sc2, mod) {
+      return new core.ForArg(intDec.rep(), test.rep(), mod.rep());
+    },
     Comment(_feedback, comment) {
       return new core.Comment(comment.rep());
     },
@@ -68,32 +77,20 @@ export default function analyze(sourceCode) {
     Var(id) {
       return this.sourceString;
     },
-    Exp3_add(left, _plus, right) {
-      return new core.BinaryExpression("+", left.rep(), right.rep());
+    Exp1_binary(left, op, right) {
+      return new core.BinaryExpression(op.rep(), left.rep(), right.rep());
     },
-    Exp3_sub(left, _minus, right) {
-      return new core.BinaryExpression("-", left.rep(), right.rep());
+    Exp2_binary(left, op, right) {
+      return new core.BinaryExpression(op.rep(), left.rep(), right.rep());
     },
-    Exp1_exp(left, _carat, right) {
-      return new core.BinaryExpression("^", left.rep(), right.rep());
+    Exp3_binary(left, op, right) {
+      return new core.BinaryExpression(op.rep(), left.rep(), right.rep());
     },
-    Exp2_mul(left, _asterisk, right) {
-      return new core.BinaryExpression("*", left.rep(), right.rep());
+    Exp4_binary(left, op, right) {
+      return new core.BinaryExpression(op.rep(), left.rep(), right.rep());
     },
-    Exp2_mod(left, _modulo, right) {
-      return new core.BinaryExpression("%", left.rep(), right.rep());
-    },
-    Exp2_div(left, _slash, right) {
-      return new core.BinaryExpression("/", left.rep(), right.rep());
-    },
-    Exp2_intdiv(left, _doubleSlash, right) {
-      return new core.BinaryExpression("//", left.rep(), right.rep());
-    },
-    Exp_paren(_left, expression, _right) {
-      return expression.rep();
-    },
-    Exp4_neg(_negative, negNum) {
-      return negNum.rep();
+    Exp_neg(op, expression) {
+      return new core.UnaryExpression(op.rep(), expression.rep());
     },
     numeral(_leading, _dot, _fraction) {
       return Number(this.sourceString);
@@ -109,6 +106,9 @@ export default function analyze(sourceCode) {
     },
     array(_leftBrac, elements, _rightBrac) {
       return new core.Arrays(elements.sourceCode);
+    },
+    modifier(id, op) {
+      return new core.Modifier(id.rep(), op.rep());
     },
   });
 

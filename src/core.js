@@ -32,9 +32,33 @@ export class IfStatement {
   }
 }
 
+export class ElseIf {
+  constructor(ifStmt) {
+    Object.assign(this, { ifStmt });
+  }
+}
+
+export class Else {
+  constructor(consequent) {
+    Object.assign(this, { consequent });
+  }
+}
+
 export class BinaryExpression {
   constructor(op, left, right) {
     Object.assign(this, { op, left, right });
+  }
+}
+
+export class UnaryExpression {
+  constructor(op, expression) {
+    Object.assign(this, { op, expression });
+  }
+}
+
+export class Modifier {
+  constructor(id, op) {
+    Object.assign(this, { id, op });
   }
 }
 
@@ -53,6 +77,12 @@ export class Return {
 export class For {
   constructor(variable, num, test, mod, consequent) {
     Object.assign(this, { variable, num, test, mod, consequent });
+  }
+}
+
+export class ForArg {
+  constructor(intDec, test, mod) {
+    Object.assign(this, { intDec, test, mod });
   }
 }
 
