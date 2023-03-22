@@ -9,28 +9,38 @@
         body {
             background-color: #006400;
             color: #FFDB58;
-            font-family: "Times New Roman", Times, serif;
+            font-family: "Arial", sans-serif;
             text-align: center;
         }
         .container {
             background-color: #004400;
-            height: 100vh;
+            height: 300vh;
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
         }
+        .code {
+            font-size: 20px;
+        }
         h1 {
             font-size: 50px;
-            margin-top: 50px;
+            margin-top: 40px;
             display: inline-block;
+            font-family: "Times New Roman", Times, serif;
         }
         h1 span {
             background-color: #004400;
             padding: 10px;
         }
+        h2 {
+            font-size: 30px;
+        }
+        h3 {
+            font-size: 22px;
+        }
         img {
-            width: 10%;
+            width: 20%;
             height: auto;
             margin: 50px 0;
         }
@@ -44,7 +54,58 @@
     <div class="container">
         <h1><span>Electric Script</span></h1>
         <img src="docs/images/ElectricScript.png" alt="Electric Script Logo">
-        <p>ElectricScript is a "juiced-up" programming language for electrical engineers, aimed to bridge the gap between electrical engineering and computer science. With its electrifying set of terms and tailored features, it "amps" up the understanding for electrical engineers. Get ready to "short-circuit" your way into programming with a familiar set of engineering terms that will be sure to cause a "spark" in your brain!</p>
+        <p><a href="https://github.com/StatusSin/Electric-Script">Electric Script</a> is a "juiced-up" programming language for electrical engineers, aimed to bridge the gap between electrical engineering and computer science. With its electrifying set of terms and tailored features, it "amps" up the understanding for electrical engineers. Get ready to "short-circuit" your way into programming with a familiar set of engineering terms that will be sure to cause a "spark" in your brain!</p>
+
+
+        <h2>Code Examples</h2>
+        <h3>Assignment</h3>
+        <div class="code">
+        load x = 5 <br>
+        label word = "Hello" <br>
+        switch lever = on</div>
+
+        <h3>Changemaker</h3>
+        <div class="code">
+        circuit changeMaker(load payment)<br>
+        +terminal<br>
+        load quarters = payment // 25<br>
+        payment = payment % 25<br>
+        load dimes = payment // 10<br>
+        payment = payment % 10<br>
+        load nickels = payment // 5<br>
+        payment = payment % 5<br>
+        out [quarters, dimes, nickels, payment]<br>
+        -terminal</div>
+
+        <h3>Conditional</h3>
+        <div class="code">
+        load x = 3 <br>
+        zener(x != 5)<br>
+        +terminal<br>
+        display("load is not 5")<br>
+        -terminal<br>
+        else zener(x == 5)<br>
+        +terminal<br>
+        display("load is 5")<br>
+        -terminal</div>
+
+        <h3>Looping</h3>
+        <div class="code">
+        sequential(load i = 0; i <= 10; i++)<br>
+        +terminal<br>
+        zener(i == 3)<br>
+        +terminal<br>
+        short-circuit<br>
+        -terminal<br>
+        -terminal</div>
+
+        <h3>Printing</h3>
+        <div class="code">
+        display("Hello there")</div>
+
+        <h2>Developers</h2>
+        <p>!!! bios go here !!!</p>
+
     </div>
 </body>
 </html>
