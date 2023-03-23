@@ -69,13 +69,13 @@
         <div class="code">
         circuit changeMaker(load payment)<br>
         +terminal<br>
-        load quarters = payment // 25<br>
-        payment = payment % 25<br>
-        load dimes = payment // 10<br>
-        payment = payment % 10<br>
-        load nickels = payment // 5<br>
-        payment = payment % 5<br>
-        out [quarters, dimes, nickels, payment]<br>
+        &emsp;load quarters = payment // 25<br>
+        &emsp;payment = payment % 25<br>
+        &emsp;load dimes = payment // 10<br>
+        &emsp;payment = payment % 10<br>
+        &emsp;load nickels = payment // 5<br>
+        &emsp;payment = payment % 5<br>
+        &emsp;out [quarters, dimes, nickels, payment]<br>
         -terminal</div>
 
         <h3>Conditional</h3>
@@ -83,21 +83,21 @@
         load x = 3 <br>
         zener(x != 5)<br>
         +terminal<br>
-        display("load is not 5")<br>
+        &emsp;display("load is not 5")<br>
         -terminal<br>
         else zener(x == 5)<br>
         +terminal<br>
-        display("load is 5")<br>
+        &emsp;display("load is 5")<br>
         -terminal</div>
 
         <h3>Looping</h3>
         <div class="code">
         sequential(load i = 0; i <= 10; i++)<br>
         +terminal<br>
-        zener(i == 3)<br>
-        +terminal<br>
-        short-circuit<br>
-        -terminal<br>
+        &emsp;zener(i == 3)<br>
+        &emsp;+terminal<br>
+        &emsp;&emsp;short-circuit<br>
+        &emsp;-terminal<br>
         -terminal</div>
 
         <h3>Printing</h3>
