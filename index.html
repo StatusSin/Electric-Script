@@ -21,7 +21,7 @@
             align-items: center;
         }
         pre {
-            background-color: #004400;
+            background-color: #000000;
             border: 1px solid #FFDB58;
             padding: 10px;
             margin: 20px;
@@ -30,6 +30,19 @@
         code {
             font-size: 20px;
             font-family: "Courier New", Courier, monospace;
+            color: #ffffff;
+        }
+        .keyword {
+            color: #C678DD;
+        }
+        .number {
+            color: #61AFEF;
+        }
+        .string {
+            color: #98C379;
+        }
+        .comment {
+            color: #5C6370;
         }
         h1 {
             font-size: 50px;
@@ -65,47 +78,23 @@
         <h2>Code Examples</h2>
         <h3>Assignment</h3>
         <pre><code>
-load x = 5
-label word = "Hello"
-switch lever = on
+<span class="keyword">load</span> x = <span class="number">5</span>
+<span class="keyword">label</span> word = <span class="string">"Hello"</span>
+<span class="keyword">switch</span> lever = on
         </code></pre>
 
         <h3>Changemaker</h3>
         <pre><code>
-circuit changeMaker(load payment)
-+terminal
-    load quarters = payment // 25
-    payment = payment % 25
-    load dimes = payment // 10
-    payment = payment % 10
-    load nickels = payment // 5
-    payment = payment % 5
-    out [quarters, dimes, nickels, payment]
--terminal
-        </code></pre>
-
-        <h3>Conditional</h3>
-        <pre><code>
-load x = 3
-zener(x != 5)
-+terminal
-    display("load is not 5")
--terminal
-else zener(x == 5)
-+terminal
-    display("load is 5")
--terminal
-        </code></pre>
-
-        <h3>Looping</h3>
-        <pre><code>
-sequential(load i = 0; i <= 10; i++)
-+terminal
-    zener(i == 3)
-    +terminal
-        short-circuit
-    -terminal
--terminal
+<span class="keyword">circuit</span> changeMaker(<span class="keyword">load</span> payment)
+<span class="keyword">+terminal</span>
+    <span class="keyword">load</span> quarters = payment <span class="comment">// 25</span>
+    payment = payment % <span class="number">25</span>
+    <span class="keyword">load</span> dimes = payment <span class="comment">// 10</span>
+    payment = payment % <span class="number">10</span>
+    <span class="keyword">load</span> nickels = payment <span class="comment">// 5</span>
+    payment = payment % <span class="number">5</span>
+    <span class="keyword">out</span> [quarters, dimes, nickels, payment]
+<span class="keyword">-terminal
         </code></pre>
 
         <h3>Printing</h3>
