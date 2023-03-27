@@ -20,9 +20,16 @@
             justify-content: center;
             align-items: center;
         }
-        .code {
+        pre {
+            background-color: #004400;
+            border: 1px solid #FFDB58;
+            padding: 10px;
+            margin: 20px;
+            overflow-x: auto;
+        }
+        code {
             font-size: 20px;
-            text-align: left;
+            font-family: "Courier New", Courier, monospace;
         }
         h1 {
             font-size: 50px;
@@ -53,52 +60,53 @@
 </head>
 <body>
     <div class="container">
-        <h1><span>Electric Script</span></h1>
-        <img src="docs/images/ElectricScript.png" alt="Electric Script Logo">
-        <p><a href="https://github.com/StatusSin/Electric-Script">Electric Script</a> is a "juiced-up" programming language for electrical engineers, aimed to bridge the gap between electrical engineering and computer science. With its electrifying set of terms and tailored features, it "amps" up the understanding for electrical engineers. Get ready to "short-circuit" your way into programming with a familiar set of engineering terms that will be sure to cause a "spark" in your brain!</p>
-
+        <!-- The rest of your content... -->
 
         <h2>Code Examples</h2>
         <h3>Assignment</h3>
-        <div class="code">
-        load x = 5 <br>
-        label word = "Hello" <br>
-        switch lever = on</div>
+        <pre><code>
+load x = 5
+label word = "Hello"
+switch lever = on
+        </code></pre>
 
         <h3>Changemaker</h3>
-        <div class="code">
-        circuit changeMaker(load payment)<br>
-        +terminal<br>
-        &emsp;load quarters = payment // 25<br>
-        &emsp;payment = payment % 25<br>
-        &emsp;load dimes = payment // 10<br>
-        &emsp;payment = payment % 10<br>
-        &emsp;load nickels = payment // 5<br>
-        &emsp;payment = payment % 5<br>
-        &emsp;out [quarters, dimes, nickels, payment]<br>
-        -terminal</div>
+        <pre><code>
+circuit changeMaker(load payment)
++terminal
+    load quarters = payment // 25
+    payment = payment % 25
+    load dimes = payment // 10
+    payment = payment % 10
+    load nickels = payment // 5
+    payment = payment % 5
+    out [quarters, dimes, nickels, payment]
+-terminal
+        </code></pre>
 
         <h3>Conditional</h3>
-        <div class="code">
-        load x = 3 <br>
-        zener(x != 5)<br>
-        +terminal<br>
-        &emsp;display("load is not 5")<br>
-        -terminal<br>
-        else zener(x == 5)<br>
-        +terminal<br>
-        &emsp;display("load is 5")<br>
-        -terminal</div>
+        <pre><code>
+load x = 3
+zener(x != 5)
++terminal
+    display("load is not 5")
+-terminal
+else zener(x == 5)
++terminal
+    display("load is 5")
+-terminal
+        </code></pre>
 
         <h3>Looping</h3>
-        <div class="code">
-        sequential(load i = 0; i <= 10; i++)<br>
-        +terminal<br>
-        &emsp;zener(i == 3)<br>
-        &emsp;+terminal<br>
-        &emsp;&emsp;short-circuit<br>
-        &emsp;-terminal<br>
-        -terminal</div>
+        <pre><code>
+sequential(load i = 0; i <= 10; i++)
++terminal
+    zener(i == 3)
+    +terminal
+        short-circuit
+    -terminal
+-terminal
+        </code></pre>
 
         <h3>Printing</h3>
         <div class="code">
@@ -111,6 +119,16 @@
             Beach location as well as pursue a Masters in Computer Engineering. He got the idea for this language 
             after seeing his fellow Electrical Engineering students struggling to connect with CS terminology. 
             !!! bios go here !!!</p>
+
+        <h3>Aryaman Ramchandran<h3>
+        <p>Aryaman is a Computer Science major at Loyola Marymount University. His goals beyond education are to
+            become a game designer and found his own indie game company. He also hopes to use computer science and AI
+            to create engines that could assist game designers that do not have the techinchal background but still
+            have ideas that could benefit the game-space. One such engine in development is a 'chat-GPT' type engine 
+            that will one day allow users to ask it to freely generate objects for whatever game-dev language they use
+            to allow for all persons to create their own 3D library for their games.
+        </p>
+        
 
     </div>
 </body>
