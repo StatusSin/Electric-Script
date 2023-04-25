@@ -1,16 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Electric Script</title>
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Electric Script</title>
     <style>
         @font-face {
             font-family: 'Minecraft Regular';
             src: url('docs/fonts/MinecraftRegular-Bmg3.otf') format('opentype');
         }
-
         body {
             background-color: #055301;
             color: white;
@@ -87,90 +86,218 @@
         .comment {
             color: #6a9955;
         }
+        .function {
+            color: #dcdcaa;
+        }
     </style>
 </head>
 <body>
-    <div class="topnav">
-        <a href="#electric-script-title"><img src="docs/images/ElectricScriptNavigation.png" alt="Electric Script Navigation"></a>
-        <a href="#about"><img src="docs/images/AboutNavigation.png" alt="About Navigation"></a>
-        <a href="#code-examples"><img src="docs/images/CodeExamplesNavigation.png" alt="Code Examples Navigation"></a>
-        <a href="#developers"><img src="docs/images/DevelopersNavigation.png" alt="Developers Navigation"></a>
-        <a href="#resources"><img src="docs/images/RecourcesNavigation.png" alt="Resources Navigation"></a>
-    </div>
+<div class="topnav">
+    <a href="#electric-script-title"><img src="docs/images/ElectricScriptNavigation.png" alt="Electric Script Navigation"></a>
+    <a href="#about"><img src="docs/images/AboutNavigation.png" alt="About Navigation"></a>
+    <a href="#code-examples"><img src="docs/images/CodeExamplesNavigation.png" alt="Code Examples Navigation"></a>
+    <a href="#developers"><img src="docs/images/DevelopersNavigation.png" alt="Developers Navigation"></a>
+    <a href="#resources"><img src="docs/images/RecourcesNavigation.png" alt="Resources Navigation"></a>
+</div>
+		<div class="container">
+			<a href="https://github.com/StatusSin/Electric-Script">
+			<img id="electric-script-title" src="docs/images/ElectricScript.png" alt="Electric Script Logo">
+			</a> 
+			<h2 id="about"><img src="docs/images/AboutNavigation.png" alt="About Navigation"></h2>
+			<p>ElectricScript is a "juiced-up" programming language for electrical engineers, aimed to bridge the gap between 
+				electrical engineering and computer science. With its electrifying set of terms and tailored features, it "amps" 
+				up the understanding for electrical engineers. Get ready to "short-circuit" your way into programming with a familar 
+				set of engineering terms that will be sure to cause a "spark" in your brain!
+			</p>
+			<h2 id="code-examples"><img src="docs/images/CodeExamplesNavigation.png" alt="Code Examples Navigation"></h2>
+			<h3>Assignment</h3>
+<pre><code>
+    <span class="keyword">load</span> x = <span class="number">5</span>
+    <span class="keyword">label</span> word = <span class="string">"Hello"</span>
+    <span class="keyword">switch</span> lever = on
+</code></pre>
 
-    <div class="container">
-        <a href="https://github.com/StatusSin/Electric-Script">
-            <img id="electric-script-title" src="docs/images/ElectricScript.png" alt="Electric Script Logo">
-        </a> 
-    
-        <h2 id="about"><img src="docs/images/AboutNavigation.png" alt="About Navigation"></h2>
-        <p>ElectricScript is a "juiced-up" programming language for electrical engineers, aimed to bridge the gap between 
-            electrical engineering and computer science. With its electrifying set of terms and tailored features, it "amps" 
-            up the understanding for electrical engineers. Get ready to "short-circuit" your way into programming with a familar 
-            set of engineering terms that will be sure to cause a "spark" in your brain!</p>
-    
-        <h2 id="code-examples"><img src="docs/images/CodeExamplesNavigation.png" alt="Code Examples Navigation"></h2>
-        <h3>Assignment</h3>
-        <pre><code>
-            <span class="keyword">load</span> x = <span class="number">5</span>
-            <span class="keyword">label</span> word = <span class="string">"Hello"</span>
-            <span class="keyword">switch</span> lever = on
-        </code></pre>
+<h3>Changemaker</h3>
+<pre><code>
+    <span class="keyword">circuit</span> changeMaker(<span class="keyword">load</span> payment)
+    <span class="keyword">+terminal</span>
+    <span class="keyword">load</span> quarters = payment <span class="comment">// 25</span>
+    payment = payment % <span class="number">25</span>
+    <span class="keyword">load</span> dimes = payment <span class="comment">// 10</span>
+    payment = payment % <span class="number">10</span>
+    <span class="keyword">load</span> nickels = payment <span class="comment">// 5</span>
+    payment = payment % <span class="number">5</span>
+    <span class="keyword">out</span> [quarters, dimes, nickels, payment]
+    <span class="keyword">-terminal
+</code></pre>
 
-    <h3>Changemaker</h3>
-        <pre><code>
-            <span class="keyword">circuit</span> changeMaker(<span class="keyword">load</span> payment)
-            <span class="keyword">+terminal</span>
-            <span class="keyword">load</span> quarters = payment <span class="comment">// 25</span>
-            payment = payment % <span class="number">25</span>
-            <span class="keyword">load</span> dimes = payment <span class="comment">// 10</span>
-            payment = payment % <span class="number">10</span>
-            <span class="keyword">load</span> nickels = payment <span class="comment">// 5</span>
-            payment = payment % <span class="number">5</span>
-            <span class="keyword">out</span> [quarters, dimes, nickels, payment]
-            <span class="keyword">-terminal
-        </code></pre>
+<h3>Printing</h3>
+<pre><code>
+    <span class="keyword">display</span>("Hello there")
+</code></pre>
 
-    <h3>Printing</h3>
-        <pre><code>
-            <span class="keyword">display</span>("Hello there")
-        </code></pre>
 
-    <h2 id="developers"><img src="docs/images/DevelopersNavigation.png" alt="Developers Navigation"></h2>
-        <h3 style="color: #ffc244; text-align: center;">Jurgis Stepenka</h3>
-            <p style="text-align: justify;">Jurgis is an international student from Venezuela at Loyola Marymount University, he is a Computer Science 
-                major with a minor in Statistics and Data Science. After graduating he plans to get involved with game 
-                design, as video games and entertainment bring people together. He hopes to potentially broaden his 
-                horizons outside the United States and continue to see more the world.</p>
-        
-        <h3 style="color: #ffc244; text-align: center;">Kevin Gager</h3>
-            <p style="text-align: justify;">Kevin is an Electrical Engineering and Computer Science double major at Loyola Marymount University. 
-                Upon graduation, he plans on joining Northrop Grumman on their spacecraft design team in their Redondo
-                Beach location as well as pursue a Masters in Computer Engineering. He got the idea for this language
-                after seeing his fellow Electrical Engineering students struggling to connect with CS terminology. </p>
+<h3>Hello World</h3>
+<h4>JavaScript</h4>
+<pre><code>
+<span class="function">function</span> helloWorld() {
+    console.<span class="function">log</span>(<span class="string">“Hello World”</span>)
+}
+</code></pre>
+<h4>ElectricScript</h4>
+<pre><code>
+<span class="keyword">circuit</span> helloWorld()
+<span class="keyword">+terminal</span>
+         display(<span class="string">“Hello World</span>)
+<span class="keyword">-terminal</span>
+</code></pre>
+<h3>Factorial</h3>
+<h4>JavaScript</h4>
+<pre><code>
+<span class="function">function</span> factorial(n) {
+  <span class="keyword">if</span> (n === 0) {
+    <span class="keyword">return</span> 1;
+  }
+  <span class="keyword">return</span> n * factorial(n - 1);
+}
 
-        <h3 style="color: #ffc244; text-align: center;">Aryaman Ramchandran</h3>
-            <p style="text-align: justify;">Aryaman is a Computer Science major at Loyola Marymount University. His goals beyond education are to
-                become a game designer and found his own indie game company. He also hopes to use computer science and AI
-                to create engines that could assist game designers that do not have the technical background but still
-                have ideas that could benefit the game-space. One such engine in development is a 'chat-GPT' type engine 
-                that will one day allow users to ask it to freely generate objects for whatever game-dev language they use
-                to allow for all persons to create their own 3D library for their games.
-            </p>
-            
-        <h3 style="color: #ffc244; text-align: center;">Gabriel Sonkowsky</h3>
-            <p style="text-align: justify;">Gabriel is a Computer Science major at Loyola Marymount University. He hopes to create tools and apps that
-                have a positive impact on lives of people who use them, whether it be through making difficult tasks easier,
-                or adding convenience to daily life. 
-            </p>
-            
-        <h2 id="resources"><img src="docs/images/RecourcesNavigation.png" alt="Resources Navigation"></h2>
-            <p>Check out these helpful resources to learn more about ElectricScript:</p>
-    <ul>
-        <li><a href="#">Documentation</a></li>
-        <li><a href="#">GitHub Repository</a></li>
-        <li><a href="#">Forum</a></li>
-    </ul>
-</div> 
-</body>
+console.<span class="function">log</span>(factorial(5)); <span class="comment">// Output: 120</span>
+</code></pre>
+<h4>ElectricScript</h4>
+<pre><code>
+<span class="keyword">circuit</span> factorial(n)
+<span class="keyword">+terminal</span>
+  zener (n == 0)
+  <span class="keyword">+terminal</span>
+    out 1
+  <span class="keyword">-terminal</span>
+  out n * circuit(n - 1)
+<span class="keyword">-terminal</span>
+
+display(factorial(5)) feedback Output: 120
+</code></pre>
+<h3>Class Creation</h3>
+<h4>JavaScript</h4>
+<pre><code>
+<span class="keyword">class</span> Fruit {
+  constructor(color, weight) {
+    this.color = color;
+    this.weight = weight;
+  }
+
+  getColor() {
+    <span class="keyword">return</span> this.color;
+  }
+}
+
+<span class="keyword">class</span> Watermelon <span class="keyword">extends</span> Fruit {
+  constructor(weight, seedless) {
+    super(<span class="string">“red”</span>, weight);
+    this.seedless = seedless;
+  }
+}
+</code></pre>
+<h4>ElectricScript</h4>
+<pre><code>
+<span class="keyword">signal</span> Fruit
+<span class="keyword">+terminal</span>
+   drawing(color,weight)
+   <span class="keyword">+terminal</span>
+       current.color = color
+       current.weight = weight
+   <span class="keyword">-terminal</span>
+
+   getColor()
+   <span class="keyword">+terminal</span>
+       out current.color
+   <span class="keyword">-terminal</span>
+<span class="keyword">-terminal</span>
+
+<span class="keyword">signal</span> Watermellon wired to Fruit
+<span class="keyword">+terminal</span>
+   drawing(weight, seedless)
+   <span class="keyword">+terminal</span>
+      amplify(<span class="string">“red”</span>, weight)
+      current.seedless = seedless
+   <span class="keyword">-terminal</span>
+<span class="keyword">-terminal</span>
+</code></pre>
+
+			<h3>For and If Loops</h3>
+<h4>JavaScript</h4>
+<pre><code>
+<span class="keyword">for</span>(<span class="keyword">var</span> i = 0; i <= 10; i++) {
+  <span class="keyword">if</span>(i % 2) {
+    console.<span class="function">log</span>(i);
+  }
+}
+</code></pre>
+<h4>ElectricScript</h4>
+<pre><code>
+<span class="keyword">sequential</span>(<span class="keyword">load</span> i = 0; i <= 10; i++)
+<span class="keyword">+terminal</span>
+    zener(i % 2)
+    <span class="keyword">+terminal</span>
+        display(i)
+    <span class="keyword">-terminal</span>
+<span class="keyword">-terminal</span>
+</code></pre>
+<h3>Arithmetic</h3>
+<h4>JavaScript</h4>
+<pre><code>
+Addition: <span class="number">2</span> + <span class="number">3</span>
+Subtraction: <span class="number">2</span> - <span class="number">3</span>
+Multiplication: <span class="number">2</span> * <span class="number">3</span>
+Division: <span class="number">2</span> / <span class="number">3</span>
+Integer Division: <span class="number">2</span> // <span class="number">3</span>
+Exponents: <span class="number">2</span> ^ <span class="number">3</span>
+Modulo: <span class="number">2</span> % <span class="number">3</span>
+Parallel Addition: (<span class="number">2</span>*<span class="number">3</span>)/(<span class="number">2</span>+<span class="number">3</span>)
+</code></pre>
+<h4>ElectricScript</h4>
+<pre><code>
+Addition: <span class="number">2</span> + <span class="number">3</span>
+Subtraction: <span class="number">2</span> - <span class="number">3</span>
+Multiplication: <span class="number">2</span> * <span class="number">3</span>
+Division: <span class="number">2</span> / <span class="number">3</span>
+Integer division: <span class="number">2</span> // <span class="number">3</span>
+Exponents: <span class="number">2</span> ^ <span class="number">3</span>
+Modulo: <span class="number">2</span> % <span class="number">3</span>
+Parallel Addition: <span class="number">2</span> || <span class="number">3</span>
+</code></pre>
+			<h2 id="developers"><img src="docs/images/DevelopersNavigation.png" alt="Developers Navigation"></h2>
+			<h3 style="color: #ffc244; text-align: center;">Jurgis Stepenka</h3>
+			<p style="text-align: justify;">Jurgis is an international student from Venezuela at Loyola Marymount University, he is a Computer Science 
+				major with a minor in Statistics and Data Science. After graduating he plans to get involved with game 
+				design, as video games and entertainment bring people together. He hopes to potentially broaden his 
+				horizons outside the United States and continue to see more the world.
+			</p>
+			<h3 style="color: #ffc244; text-align: center;">Kevin Gager</h3>
+			<p style="text-align: justify;">Kevin is an Electrical Engineering and Computer Science double major at Loyola Marymount University. 
+				Upon graduation, he plans on joining Northrop Grumman on their spacecraft design team in their Redondo
+				Beach location as well as pursue a Masters in Computer Engineering. He got the idea for this language
+				after seeing his fellow Electrical Engineering students struggling to connect with CS terminology. 
+			</p>
+			<h3 style="color: #ffc244; text-align: center;">Aryaman Ramchandran</h3>
+			<p style="text-align: justify;">Aryaman is a Computer Science major at Loyola Marymount University. His goals beyond education are to
+				become a game designer and found his own indie game company. He also hopes to use computer science and AI
+				to create engines that could assist game designers that do not have the technical background but still
+				have ideas that could benefit the game-space. One such engine in development is a 'chat-GPT' type engine 
+				that will one day allow users to ask it to freely generate objects for whatever game-dev language they use
+				to allow for all persons to create their own 3D library for their games.
+			</p>
+			<h3 style="color: #ffc244; text-align: center;">Gabriel Sonkowsky</h3>
+			<p style="text-align: justify;">Gabriel is a Computer Science major at Loyola Marymount University. He hopes to create tools and apps that
+				have a positive impact on lives of people who use them, whether it be through making difficult tasks easier,
+				or adding convenience to daily life. 
+			</p>
+			<h2 id="resources"><img src="docs/images/RecourcesNavigation.png" alt="Resources Navigation"></h2>
+			<p>Check out these helpful resources to learn more about ElectricScript:</p>
+			<ul>
+				<li><a href="#">Documentation</a></li>
+				<li><a href="#">GitHub Repository</a></li>
+				<li><a href="#">Forum</a></li>
+			</ul>
+		</div>
+	</body>
 </html>
