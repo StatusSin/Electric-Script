@@ -391,5 +391,16 @@ Parallel Addition: <span class="number">2</span> || <span class="number">3</span
         topnav.classList.add("topnav-visible");
       });
     </script>
+    <script>
+      document.querySelectorAll(".topnav a").forEach((navLink) => {
+        navLink.addEventListener("click", (e) => {
+          e.preventDefault();
+          const targetId = e.currentTarget.getAttribute("href");
+          const targetElement = document.querySelector(targetId);
+
+          targetElement.scrollIntoView({ behavior: "smooth" });
+        });
+      });
+    </script>
   </body>
 </html>
