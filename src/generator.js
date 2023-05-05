@@ -13,6 +13,7 @@ export default function generate(program) {
   })(new Map());
 
   function gen(node) {
+    console.log(node.constructor.name);
     return generators[node.constructor.name](node);
   }
 
@@ -28,6 +29,13 @@ export default function generate(program) {
     Variable(v) {
       // Standard library constants just get special treatment
       return targetName(v);
+    },
+    Block(b) {
+      gen(b.consequent);
+    },
+    ElseIf(s) {
+      output.push(`} else {`);
+      output.push(s.IfStatement)
     },
     Function(f) {
       return targetName(f);
@@ -88,9 +96,11 @@ export default function generate(program) {
     Number(e) {
       return e;
     },
-
+    String(e) {
+      return e;
+    },
     StringLiteral(e) {
-      return `"${e.contents}"`;
+      return JSON.stringify(e);
     },
     Array(a) {
       return a.map(gen);
