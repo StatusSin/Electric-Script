@@ -27,9 +27,3 @@ if (process.argv.length !== 4) {
 } else {
   compileFromFile(process.argv[2], process.argv[3]);
 }
-
-// console.log("Hello");
-
-export function add(x, y) {
-  return x + y;
-}

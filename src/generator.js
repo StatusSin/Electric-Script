@@ -35,7 +35,9 @@ export default function generate(program) {
     AssignmentStatement(s) {
       output.push(`${gen(s.target)} = ${gen(s.source)};`);
     },
-
+    PrintStatement(s) {
+      output.push(`console.log(${gen(s.argument)});`);
+    },
     Return(s) {
       output.push(`return ${gen(s.expression)};`);
     },
@@ -88,10 +90,13 @@ export default function generate(program) {
     },
 
     StringLiteral(e) {
-      return e;
+      return `"${e.contents}"`;
     },
     Array(a) {
       return a.map(gen);
     },
   };
+
+  gen(program);
+  return output.join("\n");
 }
