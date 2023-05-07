@@ -68,13 +68,6 @@ export default function generate(program) {
       if (s.alternate != null) {
         output.push("}");
         gen(s.alternate);
-        // if (s.alternate != null) {
-        //   output.push("} else if");
-        //   gen(s.alternate.ifStmt);
-        // } else {
-        //   output.push("} else");
-        //   gen(s.alternate);
-        // }
       } else {
         output.push("}");
       }
@@ -94,7 +87,7 @@ export default function generate(program) {
     },
     BinaryExpression(e) {
       console.log("Binary");
-      const op = { "==": "===", "!=": "!==" }[e.op] ?? e.op;
+      const op = { "===": "==", "!==": "!=" }[e.op] ?? e.op;
       if (e.op === "//") {
         return `(${e.left} / ${e.right})`;
       } else if (e.op === "^") {
