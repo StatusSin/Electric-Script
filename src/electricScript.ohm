@@ -13,7 +13,7 @@ ElectricScript {
                     
     For				= sequential "(" ForArg ")" Block
     
-    ForArg			= IntDec ";" Exp1 ";" modifier
+    ForArg			= ArrayIntDec ";" Exp1 ";" modifier
     
     modifier		= id "++" | id "--"
     
@@ -26,6 +26,8 @@ ElectricScript {
     BoolDec			= switch Var "=" bool | switch Var "=" Exp
     
     StrDec			= label Var "=" stringLiteral
+    
+    ArrayIntDec     = load Var "=" Exp
     
     Comment			= feedback (~"\n" any)*
                     

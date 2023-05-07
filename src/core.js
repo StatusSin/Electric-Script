@@ -19,6 +19,13 @@ export class VarDeclaration {
   }
 }
 
+export class ArrayVarDeclaration {
+  constructor(variable, initializer) {
+    this.variable = variable;
+    this.initializer = initializer;
+  }
+}
+
 export class AssignmentStatement {
   constructor(variable, initializer) {
     this.variable = variable;
@@ -63,6 +70,10 @@ export class ArrayExpression {
   }
 }
 
+export class BreakStatement {
+  // Intentionally empty
+}
+
 export class Modifier {
   constructor(id, op) {
     Object.assign(this, { id, op });
@@ -82,8 +93,8 @@ export class Return {
 }
 
 export class For {
-  constructor(variable, num, test, mod, consequent) {
-    Object.assign(this, { variable, num, test, mod, consequent });
+  constructor(args, consequent) {
+    Object.assign(this, { args, consequent });
   }
 }
 

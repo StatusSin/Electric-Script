@@ -32,6 +32,9 @@ export default function analyze(sourceCode) {
     BoolDec(_switch, variable, _eq, initializer) {
       return new core.VarDeclaration(variable.rep(), initializer.rep());
     },
+    ArrayIntDec(_load, variable, _eq, initializer) {
+      return new core.ArrayVarDeclaration(variable.rep(), initializer.rep());
+    },
     AssignStmt(target, _eq, source) {
       return new core.AssignmentStatement(target.rep(), source.rep());
     },
@@ -107,6 +110,9 @@ export default function analyze(sourceCode) {
     Exp5_array(_leftBrac, args, _rightBrac) {
       const elements = args.asIteration().children.map((e) => e.rep());
       return new core.ArrayExpression(elements);
+    },
+    Break(_shortCircuit) {
+      return new core.BreakStatement();
     },
     modifier(id, op) {
       return new core.Modifier(id.rep(), op.rep());

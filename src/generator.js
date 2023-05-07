@@ -33,6 +33,16 @@ export default function generate(program) {
         output.push(`let ${gen(d.variable)} = ${gen(d.initializer)};`);
       }
     },
+    ArrayVarDeclaration(d) {
+      console.log("VarDec");
+      if (d.initializer == "on") {
+        return `let ${gen(d.variable)} = true`;
+      } else if (d.initializer == "off") {
+        return `let ${gen(d.variable)} = false`;
+      } else {
+        return `let ${gen(d.variable)} = ${gen(d.initializer)};`;
+      }
+    },
     Variable(v) {
       console.log("Var");
       // Standard library constants just get special treatment
@@ -60,7 +70,9 @@ export default function generate(program) {
       console.log("Return");
       output.push(`return ${gen(s.value)};`);
     },
-
+    BreakStatement(s) {
+      output.push("break;");
+    },
     IfStatement(s) {
       console.log("If");
       output.push(`if ${gen(s.test)} {`);
@@ -80,10 +92,12 @@ export default function generate(program) {
       output.push("else");
       gen(s.ifStmt);
     },
+    For(s) {
+      output.push(`for (${gen(s.args)})`);
+      gen(s.consequent);
+    },
     ForArg(s) {
-      output.push(`for (let ${gen(s.iterator)} of ${gen(s.collection)}) {`);
-      gen(s.body);
-      output.push("}");
+      return `${gen(s.intDec)}; ${gen(s.test)}; ${gen(s.mod)}`;
     },
     BinaryExpression(e) {
       console.log("Binary");
@@ -107,6 +121,9 @@ export default function generate(program) {
         return `_r(${operand})`;
       }
       return `${e.op}(${operand})`;
+    },
+    Modifier(e) {
+      return `${e.id}${e.op}`;
     },
     ArrayExpression(e) {
       return `[${gen(e.elements).join(",")}]`;
