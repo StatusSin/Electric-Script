@@ -207,3 +207,48 @@ Modulo: 2 % 3
 Parellel Addition: 2 || 3
 
 ```
+
+## Usage
+
+To run from the command line:
+
+```
+node src/electricScript.js <filename> <outputType>
+```
+
+The `outputType` indicates what you wish to print to standard output:
+
+<table>
+<tr><th>Option</th><th>Description</th></tr>
+<tr><td>analyzed</td><td>The decorated AST</td></tr>
+<tr><td>optimized</td><td>The optimized decorated AST</td></tr>
+<tr><td>js</td><td>The translation of the program to JavaScript</td></tr>
+</table>
+
+Example runs, using the sample introductory program above:
+
+```
+$ node src/electricScript.js examples/printing.electricScript analyzed
+   1 | Program statements=[#2]
+   2 | PrintStatement argument=#3
+   3 | StringLiteral contents='Hello there'
+```
+
+```
+$ node src/electricScript.js examples/printing.electricScript optimized
+   1 | Program statements=[#2]
+   2 | PrintStatement argument=#3
+   3 | StringLiteral contents='Hello there'
+```
+
+```
+$ node src/electricScript.js examples/printing.electricScript js
+console.log("Hello there");
+```
+
+Pipe the output back into node to compile and run on the same line:
+
+```
+$ node src/electricScript.js examples/printing.carlos js | node
+Hello there
+```
