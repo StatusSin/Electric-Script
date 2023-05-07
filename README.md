@@ -249,6 +249,6 @@ console.log("Hello there");
 Pipe the output back into node to compile and run on the same line:
 
 ```
-$ node src/electricScript.js examples/printing.carlos js | node
+$ node src/electricScript.js examples/printing.electricScript js | node
 Hello there
 ```
