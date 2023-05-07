@@ -24,6 +24,7 @@ export default function generate(program) {
       gen(p.statements);
     },
     VarDeclaration(d) {
+      console.log("VarDec");
       if (d.initializer == "on") {
         output.push(`let ${gen(d.variable)} = true`);
       } else if (d.initializer == "off") {
@@ -33,45 +34,62 @@ export default function generate(program) {
       }
     },
     Variable(v) {
+      console.log("Var");
       // Standard library constants just get special treatment
       return targetName(v);
     },
     Block(b) {
+      console.log("Block");
       gen(b.consequent);
     },
-    ElseIf(s) {
-      output.push(`} else {`);
-      output.push(s.IfStatement);
-    },
     FunctionDeclaration(d) {
+      console.log("FuncDec");
       output.push(`function ${gen(d.name)}(${gen(d.variable)}) {`);
       gen(d.consequent);
       output.push("}");
     },
     Function(f) {
+      console.log("Func");
       return targetName(f);
     },
     AssignmentStatement(s) {
+      console.log("Assign");
       output.push(`${gen(s.target)} = ${gen(s.source)};`);
     },
     PrintStatement(s) {
+      console.log("Print");
       output.push(`console.log(${gen(s.argument)});`);
     },
     Return(s) {
+      console.log("Return");
       output.push(`return ${gen(s.expression)};`);
     },
 
     IfStatement(s) {
-      output.push(`if (${gen(s.test)}) {`);
-      gen(s.consequent);
-      if (s.alternate instanceof IfStatement) {
-        output.push("} else");
+      console.log("If");
+      output.push(`if ${gen(s.test)} {`);
+      gen(s.consequence);
+      if (s.alternate != null) {
+        output.push("}");
         gen(s.alternate);
+        // if (s.alternate != null) {
+        //   output.push("} else if");
+        //   gen(s.alternate.ifStmt);
+        // } else {
+        //   output.push("} else");
+        //   gen(s.alternate);
+        // }
       } else {
-        output.push("} else {");
-        gen(s.alternate);
         output.push("}");
       }
+    },
+    Else(s) {
+      gen(s.consequent);
+    },
+    ElseIf(s) {
+      console.log("Else if");
+      output.push("else");
+      gen(s.ifStmt);
     },
     ForArg(s) {
       output.push(`for (let ${gen(s.iterator)} of ${gen(s.collection)}) {`);
@@ -79,10 +97,12 @@ export default function generate(program) {
       output.push("}");
     },
     BinaryExpression(e) {
+      console.log("Binary");
       const op = { "==": "===", "!=": "!==" }[e.op] ?? e.op;
-      return `(${gen(e.left)} ${op} ${gen(e.right)})`;
+      return `(${e.left} ${op} ${e.right})`;
     },
     UnaryExpression(e) {
+      console.log("Unary");
       const operand = gen(e.operand);
       if (e.op === "some") {
         return operand;
@@ -102,18 +122,23 @@ export default function generate(program) {
       return `(${object}${chain}[${field}])`;
     },
     ConstructorCall(c) {
+      console.log("Const");
       return `new ${gen(c.callee)}(${gen(c.args).join(", ")})`;
     },
     Number(e) {
+      console.log("Num");
       return e;
     },
     String(e) {
+      console.log("String");
       return e;
     },
     StringLiteral(e) {
+      console.log("StringLit");
       return JSON.stringify(e.contents);
     },
     Array(a) {
+      console.log("Array");
       return a.map(gen);
     },
   };
