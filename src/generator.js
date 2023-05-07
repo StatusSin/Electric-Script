@@ -91,7 +91,7 @@ export default function generate(program) {
     BinaryExpression(e) {
       const op = { "===": "==", "!==": "!=" }[e.op] ?? e.op;
       if (e.op === "//") {
-        return `(${e.left} / ${e.right})`;
+        return `(Math.floor(${e.left}/${e.right}))`;
       } else if (e.op === "^") {
         return `(${e.left} ** ${e.right})`;
       }
