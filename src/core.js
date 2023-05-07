@@ -56,6 +56,13 @@ export class UnaryExpression {
   }
 }
 
+export class ArrayExpression {
+  // Example: ["Emma", "Norman", "Ray"]
+  constructor(elements) {
+    this.elements = elements;
+  }
+}
+
 export class Modifier {
   constructor(id, op) {
     Object.assign(this, { id, op });

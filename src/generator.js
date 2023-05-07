@@ -42,19 +42,15 @@ export default function generate(program) {
       console.log("Block");
       gen(b.consequent);
     },
-    FunctionDeclaration(d) {
+    Function(d) {
       console.log("FuncDec");
       output.push(`function ${gen(d.name)}(${gen(d.variable)}) {`);
       gen(d.consequent);
       output.push("}");
     },
-    Function(f) {
-      console.log("Func");
-      return targetName(f);
-    },
     AssignmentStatement(s) {
       console.log("Assign");
-      output.push(`${gen(s.target)} = ${gen(s.source)};`);
+      output.push(`${gen(s.variable)} = ${gen(s.initializer)};`);
     },
     PrintStatement(s) {
       console.log("Print");
@@ -62,7 +58,7 @@ export default function generate(program) {
     },
     Return(s) {
       console.log("Return");
-      output.push(`return ${gen(s.expression)};`);
+      output.push(`return ${gen(s.value)};`);
     },
 
     IfStatement(s) {
@@ -99,6 +95,11 @@ export default function generate(program) {
     BinaryExpression(e) {
       console.log("Binary");
       const op = { "==": "===", "!=": "!==" }[e.op] ?? e.op;
+      if (e.op === "//") {
+        return `(${e.left} / ${e.right})`;
+      } else if (e.op === "^") {
+        return `(${e.left} ** ${e.right})`;
+      }
       return `(${e.left} ${op} ${e.right})`;
     },
     UnaryExpression(e) {
@@ -114,7 +115,9 @@ export default function generate(program) {
       }
       return `${e.op}(${operand})`;
     },
-
+    ArrayExpression(e) {
+      return `[${gen(e.elements).join(",")}]`;
+    },
     MemberExpression(e) {
       const object = gen(e.object);
       const field = JSON.stringify(gen(e.field));
