@@ -24,7 +24,13 @@ export default function generate(program) {
       gen(p.statements);
     },
     VarDeclaration(d) {
-      output.push(`let ${gen(d.variable)} = ${gen(d.initializer)};`);
+      if (d.initializer == "on") {
+        output.push(`let ${gen(d.variable)} = true`);
+      } else if (d.initializer == "off") {
+        output.push(`let ${gen(d.variable)} = false`);
+      } else {
+        output.push(`let ${gen(d.variable)} = ${gen(d.initializer)};`);
+      }
     },
     Variable(v) {
       // Standard library constants just get special treatment
@@ -35,7 +41,12 @@ export default function generate(program) {
     },
     ElseIf(s) {
       output.push(`} else {`);
-      output.push(s.IfStatement)
+      output.push(s.IfStatement);
+    },
+    FunctionDeclaration(d) {
+      output.push(`function ${gen(d.name)}(${gen(d.variable)}) {`);
+      gen(d.consequent);
+      output.push("}");
     },
     Function(f) {
       return targetName(f);
@@ -100,7 +111,7 @@ export default function generate(program) {
       return e;
     },
     StringLiteral(e) {
-      return JSON.stringify(e);
+      return JSON.stringify(e.contents);
     },
     Array(a) {
       return a.map(gen);

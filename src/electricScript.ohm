@@ -31,9 +31,7 @@ ElectricScript {
                     
     Break			= shortCircuit
                     
-    Return			= out Value
-    
-    Value			= Var | stringLiteral | numeral | array
+    Return			= out Exp5
                     
     Func			= circuit id"(" type id ")" Block
                     
@@ -71,8 +69,8 @@ ElectricScript {
                     
     Exp4			= Exp5 "^" Exp4								--binary
     				| Exp5
-    
     Exp5			= Term
+    				| "[" NonemptyListOf<Term, ",">	"]"			--array
     				| "(" Exp ")"								--paren
     
     
@@ -90,7 +88,6 @@ ElectricScript {
     else			= "else" ~idChar
     circuit			= "circuit" ~idChar
     out				= "out" ~idChar
-    array			= "[" element* "]"
     elementVal		= numeral | stringLiteral | id
     element			= elementVal ", " 			--elem
     				| elementVal				--endElem

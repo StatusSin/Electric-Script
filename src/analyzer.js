@@ -104,8 +104,9 @@ export default function analyze(sourceCode) {
     _terminal() {
       return this.sourceString;
     },
-    array(_leftBrac, elements, _rightBrac) {
-      return new core.Arrays(elements.sourceCode);
+    Exp5_array(_leftBrac, args, _rightBrac) {
+      const elements = args.children.map((e) => e.rep());
+      return new core.Arrays(elements);
     },
     modifier(id, op) {
       return new core.Modifier(id.rep(), op.rep());
