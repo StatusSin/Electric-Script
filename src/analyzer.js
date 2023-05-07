@@ -105,7 +105,7 @@ export default function analyze(sourceCode) {
       return this.sourceString;
     },
     Exp5_array(_leftBrac, args, _rightBrac) {
-      const elements = args.children.map((e) => e.rep());
+      const elements = args.asIteration().children.map((e) => e.rep());
       return new core.ArrayExpression(elements);
     },
     modifier(id, op) {
