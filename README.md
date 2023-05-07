@@ -10,31 +10,22 @@ https://statussin.github.io/Electric-Script/
 
 ## Types
 
-| JavaScript     | ElectricScript |
-| -------------- | -------------- |
-| {              | + terminal     |
-| }              | - terminal     |
-| print          | display        |
-| return         | out            |
-| int            | load           |
-| string         | label          |
-| function       | circuit        |
-| boolean        | switch         |
-| Error Messages | Failure Report |
-| true           | high           |
-| false          | low            |
-| break          | short-circuit  |
-| for            | sequential     |
-| while          | loop           |
-| if             | zener          |
-| let            | gauge          |
-| //             | feedback       |
-| new            | charge         |
-| constructor    | drawing        |
-| class          | signal         |
-| extends        | wired to       |
-| super          | amplify        |
-| this           | current        |
+| JavaScript | ElectricScript |
+| ---------- | -------------- |
+| {          | + terminal     |
+| }          | - terminal     |
+| print      | display        |
+| return     | out            |
+| int        | load           |
+| string     | label          |
+| function   | circuit        |
+| boolean    | switch         |
+| true       | high           |
+| false      | low            |
+| break      | short-circuit  |
+| for        | sequential     |
+| if         | zener          |
+| //         | feedback       |
 
 ## Example Programs
 
@@ -95,60 +86,6 @@ display(factorial(5)) feedback Output: 120
 
 ```
 
-### Class Creation
-
-JavaScript
-
-```
-
-class Fruit {
-  constructor(color, weight) {
-    this.color = color;
-    this.weight = weight;
-  }
-
-  getColor() {
-    return this.color;
-  }
-}
-
-class Watermelon extends Fruit {
-  constructor(weight, seedless) {
-    super(“red”, weight);
-    this.seedless = seedless;
-  }
-}
-
-```
-
-ElectricScript
-
-```
-signal Fruit
-+terminal
-   drawing(color,weight)
-   +terminal
-       current.color = color
-       current.weight = weight
-   -terminal
-
-   getColor()
-   +terminal
-   	out current.color
-   -terminal
--terminal
-
-signal Watermellon wired to Fruit
-+terminal
-   drawing(weight, seedless)
-   +terminal
-      amplify(“red”, weight)
-      current.seedless = seedless
-   -terminal
--terminal
-
-```
-
 ### For and If Loops
 
 JavaScript
@@ -189,7 +126,6 @@ Division: 2 / 3
 Interger Division: 2 // 3
 Exponents: 2 ^ 3
 Modulo: 2 % 3
-Parellel Addition: (2*3)/(2+3)
 
 ```
 
@@ -204,8 +140,6 @@ Division: 2 / 3
 Interger division: 2 // 3
 Exponents: 2 ^ 3
 Modulo: 2 % 3
-Parellel Addition: 2 || 3
-
 ```
 
 ## Usage
