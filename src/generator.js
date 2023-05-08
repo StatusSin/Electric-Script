@@ -37,7 +37,7 @@ export default function generate(program) {
       } else if (d.initializer == "off") {
         return `let ${gen(d.variable)} = false`;
       } else {
-        return `let ${gen(d.variable)} = ${gen(d.initializer)};`;
+        return `let ${gen(d.variable)} = ${gen(d.initializer)}`;
       }
     },
     Variable(v) {
